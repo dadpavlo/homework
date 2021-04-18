@@ -1,9 +1,10 @@
 <template>
     <div class="posts">
+        <side-bar/>
         <h2>ALL POSTS</h2>
         <div class="post" v-for="post in allPosts" :key="post.id">
-            <div class="post__user">
-                <div class="post__user__photo"></div>
+            <div class="post__user" @click="$router.push({name: 'user', params: {id: post.userId}})">
+                <div class="post__user__photo"> <img src="./free-icon-teenager-4472521.svg"></div>
                 <div class="post__user__name"><p>{{allUsers[post.userId].name}}</p></div>
             </div>
             <hr>
@@ -15,9 +16,14 @@
 </template>
 
 <script>
+import SideBar from './SideBar'
 import { mapGetters } from "vuex";
+
 export default {
     name: 'AllPosts',
+    components: {
+        SideBar,
+    },
     computed: mapGetters(["allPosts", "allUsers"]),
     async mounted() {
         this.$store.dispatch("fetchPost");
@@ -59,6 +65,7 @@ h2 {
 }
 
 .post__user {
+    cursor: pointer;
     padding-left: 10px;
     height: auto;
     width: 40%;
@@ -68,11 +75,11 @@ h2 {
     align-items: center;
 
 }
-.post__user__photo  {
+.post__user__photo img {
     margin: 5px;
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(269.96deg, #FFD232 -29.09%, rgba(255, 255, 255, 0) 91.46%), linear-gradient(270deg, #E90000 33.79%, rgba(255, 255, 255, 0) 105.41%), #37279A;
+    width: 30px;
+    height: 30px;
+    /* background: linear-gradient(269.96deg, #FFD232 -29.09%, rgba(255, 255, 255, 0) 91.46%), linear-gradient(270deg, #E90000 33.79%, rgba(255, 255, 255, 0) 105.41%), #37279A; */
 
     border-radius: 50px;
 }
@@ -81,6 +88,9 @@ hr {
     margin: 0px 10px 0px 10px;
     
     
+}
+.post__user:hover {
+    color: lightcoral;
 }
 
 </style>

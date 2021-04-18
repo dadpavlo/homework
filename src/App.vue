@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <all-posts></all-posts>
-    <side-bar></side-bar>
+    <!-- <all-posts></all-posts>
+    <side-bar></side-bar> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import SideBar from './components/SideBar'
-import AllPosts from './components/AllPosts';
+// import SideBar from './components/SideBar'
+// import AllPosts from './components/AllPosts';
 
 
 export default {
   name: 'App',
   components: {
-    SideBar,
-    AllPosts
+    // SideBar,
+    // AllPosts
   }
 }
 </script>

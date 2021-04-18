@@ -2,8 +2,8 @@
     <div class="side__bar"> 
         <!-- <h2>Привет, Ника!</h2> -->
         <div class="side__bar__content">
-            <div class="logo"><p>allpost.com</p></div>
-            <div class="side__bar__content__item"><p>All users</p></div>
+            <div class="logo"><p>allposts.com</p></div>
+            <div class="side__bar__content__item" @click="$router.push('/user')"><p>All users</p></div>
             <div class="side__bar__content__item"><p>All posts</p></div>
             <div class="side__bar__content__item"><p>Search</p></div>
         </div>
@@ -53,7 +53,7 @@ export default {
     width: 300px;
 } */
 .side__bar__content__item:hover {
-
+    cursor: pointer;
     background: linear-gradient(269.96deg, #FFD232 -29.09%, rgba(255, 255, 255, 0) 91.46%), linear-gradient(270deg, #E90000 33.79%, rgba(255, 255, 255, 0) 105.41%), #37279A;
     color: rgb(255, 255, 255);
 }
