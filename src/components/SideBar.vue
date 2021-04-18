@@ -3,8 +3,8 @@
         <!-- <h2>Привет, Ника!</h2> -->
         <div class="side__bar__content">
             <div class="logo"><p>allposts.com</p></div>
-            <div class="side__bar__content__item" @click="$router.push('/user')"><p>All users</p></div>
-            <div class="side__bar__content__item"><p>All posts</p></div>
+            <div class="side__bar__content__item"><p>All users</p></div>
+            <div class="side__bar__content__item" @click="$router.push({name: 'allPosts'})"><p>All posts</p></div>
             <div class="side__bar__content__item"><p>Search</p></div>
         </div>
     </div>

@@ -2,7 +2,7 @@ export default ({
     actions: {
         async fetchPost(ctx) {
             const res = await fetch (
-                'https://jsonplaceholder.typicode.com/posts?_limit=3'
+                'https://jsonplaceholder.typicode.com/posts?_limit=20'
             )
             const posts = await res.json()
             ctx.commit('updatePosts', posts)
@@ -18,8 +18,8 @@ export default ({
 
         },
         async createallUserPost(ctx,  id) {
-            console.log('пожалуйста работай', id);
-            ctx.commit('updateUserPost', id)
+            let i = id
+            ctx.commit('updateUserPost', i)
         }
 
 
@@ -32,12 +32,18 @@ export default ({
             state.users = users
         },
         updateUserPost(state , id) {
+            state.userPost = [];
             for(let i = 0; i < state.posts.length; i++) {
                 if (state.posts[i].userId == id) {
                     state.userPost.push(state.posts[i]);
                 }   
 
-            } 
+            }
+            let localPostUser = JSON.stringify(state.userPost);
+                if(!sessionStorage.getItem(id)) {
+                    sessionStorage.setItem(id, localPostUser);
+                }
+
             console.log('пожалуйста работай', state.userPost);
         }
     },
@@ -54,6 +60,7 @@ export default ({
             return state.users;
         },
         allUserPost(state) {
+
             return state.userPost;
         }
     }

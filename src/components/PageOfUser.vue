@@ -4,7 +4,7 @@
         <div class="body">
             
             <div class="user__body__back" @click="$router.push({name: 'allPosts'})">
-                <img src="./fi-rr-angle-left.svg" >/>
+                <img src="./fi-rr-angle-left.svg" >
             </div>
             <div class="user__body">
                 <!-- <div class="footer">
@@ -23,10 +23,10 @@
                         <p>City: {{allUsers[userId].address.city}}</p>
                     </div>
                 </div>
-                <h2 @click="mutat">{{allUserPost}}</h2>
-                <div class="user__body__posts" v-for="post in allUserPost" :key="post.id">
-                    <h3>{{post.body}}</h3>
-                    <p>{{}}</p>
+                <h2>User post</h2>
+                <div class="user__body__posts" v-for="post in userPost" :key="post.id">
+                    <h3>{{post.title}}</h3>
+                    <p>{{post.body}}</p>
                     <p></p>
                     <div class="user__post"></div>
                 </div>
@@ -47,6 +47,11 @@ export default {
     components: {
         SideBar
     }, 
+    data() {
+        return{
+            userPost: Object
+        }
+    },
     computed: {
         ...mapGetters(["allPosts", "allUsers", "allUserPost"]),
         userId() {
@@ -61,17 +66,21 @@ export default {
     async mounted() {
         this.$store.dispatch("fetchPost");
         this.$store.dispatch("fetchUser");
-        this.createallUserPost(this.userId)
-
+        this.$store.dispatch("createallUserPost", this.userId);
+        this.locUserPost();
     },
     methods: {
         ...mapActions(["createallUserPost"]),
         ...mapMutations(["updateUserPost"]),
         mutat() {
-            this.updateUserPost(this.userId)
+            this.updateUserPost(parseInt(this.$route.params.id))
             
+        },
+        locUserPost() {
+            this.userPost = JSON.parse(sessionStorage.getItem(this.userId)) 
+            console.log('userPost = ', this.userPost);
         }
-    }, 
+    }
 }
 
 </script>

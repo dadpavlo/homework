@@ -1,6 +1,7 @@
 import Router from 'vue-router'
 import AllPosts from '../components/AllPosts.vue'
 import User from '../components/PageOfUser.vue'
+// import Post from '../components/Post.vue'
 
 
 export default new Router({
@@ -14,8 +15,10 @@ export default new Router({
 
         {
             path: '/user:id',
-            name: 'user',
-            component: User
+            name:'user',
+            component: User,
+
+
         }
     ]
 })
