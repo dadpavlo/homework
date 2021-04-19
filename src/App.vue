@@ -23,5 +23,7 @@ export default {
 <style>
 #app {
     font-family: 'Inconsolata', monospace;
+    margin: 0;
+    background-color: rgb(37, 37, 37);
 }
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');</style>

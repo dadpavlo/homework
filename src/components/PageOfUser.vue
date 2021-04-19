@@ -1,6 +1,6 @@
 <template>
     <div class="user">
-        <side-bar/>
+        <!-- <side-bar/> -->
         <div class="body">
             
             <div class="user__body__back" @click="$router.push({name: 'allPosts'})">
@@ -28,6 +28,7 @@
                     <h3>{{post.title}}</h3>
                     <p>{{post.body}}</p>
                     <p></p>
+                    <router-link :to="{ name: 'post', params: { id: userId,  postId: post.id} }">Read more...</router-link>
                     <div class="user__post"></div>
                 </div>
             </div>
@@ -37,7 +38,6 @@
 
 <script>
 import { mapGetters, mapMutations, mapActions} from "vuex";
-import SideBar from './SideBar.vue'
 
 export default {
     name: 'PageOfUser',
@@ -45,7 +45,6 @@ export default {
         user: Object   
     },
     components: {
-        SideBar
     }, 
     data() {
         return{
@@ -142,5 +141,11 @@ export default {
 }
 .body {
     display: flex;
+}
+a {
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px;
+    color: rgb(241, 104, 104);   
 }
 </style>

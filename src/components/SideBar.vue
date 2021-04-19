@@ -18,7 +18,8 @@ export default {
 
 <style scoped>
 .side__bar {
-
+    left: 0;
+    margin: 0;
     position: fixed;
     font-size: 20px;
     color: rgb(246, 245, 255);

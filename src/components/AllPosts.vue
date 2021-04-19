@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 .posts {
-    padding: 10px;
+    background-color: rgb(37, 37, 37);
     align-items: center;
     display: flex;
     flex-direction: column;
